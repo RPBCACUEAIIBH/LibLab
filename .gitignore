@@ -1,0 +1,7 @@
+Ignore/*
+Build/*
+
+LibLab
+*/.~lock.*
+.~lock.*
+*.log
