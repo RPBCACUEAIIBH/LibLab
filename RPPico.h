@@ -7,15 +7,14 @@
 
 void setup () // Core 0
 {
-  delay (500);
   // Serial
-  Serial.begin(115200);
+  Serial.begin (115200);
 }
 
 void loop () // Core 0
 {
-  delay (1000);
   Serial.println ("RP2040 Reporting! :D");
+  delay (1000);
 }
 
 void setup1 () // Core 1

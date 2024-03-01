@@ -5,7 +5,6 @@
 
 void setup ()
 {
-  delay (500);
   // Serial
   Serial.begin(115200);
 }
