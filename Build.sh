@@ -43,7 +43,7 @@ Dependencies=$(grep "Dependencies:" "$ConfigFile") # Read entire line containing
 Dependencies=($Dependencies) # String to array
 Dependencies=${Dependencies[@]:1} # Shift array and convert back to string
 Libraries=""
-Version="v1.2"
+Version="v1.2.2"
 
 ### Functions ###
 function Message # $1 => "message"; $2 => E/W/I (Message Level: Error/Warning/Info);
@@ -324,6 +324,10 @@ then
   mkdir "$OwnDir/Build"
   shift
 else
+  if [[ ! -d "$OwnDir/Build" ]]
+  then
+    mkdir "$OwnDir/Build"
+  fi
   for i in $CppFiles
   do
     Changed="false"
