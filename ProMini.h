@@ -1,12 +1,19 @@
 #define MAIN_INCLUDED
 
 // Inclusions
-//#include "YourLibrary.h"
+#include "src/LibraryTemplate.h" // << Rename this template to whatever your library you develope.
+
+
+LibraryTemplate LibTemp = LibraryTemplate ();
+
 
 void setup ()
 {
   // Serial
   Serial.begin(115200);
+  Serial.println ("");
+  Serial.println ("");
+  Serial.println (LibTemp.GetHello ());
 }
 
 void loop ()

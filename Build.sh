@@ -188,12 +188,12 @@ function Thread # $1 - Thread ID
             fi
           fi
           rm -rf "$OwnDir/Build/$File.o"
-          if [[ "$OwnDir/$SourceDir" == "$OwnDir/HexaLib" ]]
+          if [[ "$OwnDir/$SourceDir" == "$OwnDir/src" ]]
           then
             Message "Using \"$ArduinoCompat\" for $OwnDir/$SourceDir/$File.cpp"
-	    g++ -std=c++14 -g -o "$OwnDir/Build/$File.o" -c "$OwnDir/$SourceDir/$File.cpp" -I "$OwnDir/HexaLib" $Libraries $PerformanceOpt $Warnings $ArduinoCompat
+	    g++ -std=c++14 -g -o "$OwnDir/Build/$File.o" -c "$OwnDir/$SourceDir/$File.cpp" $Libraries $PerformanceOpt $Warnings $ArduinoCompat
 	  else
-	    g++ -std=c++14 -g -o "$OwnDir/Build/$File.o" -c "$OwnDir/$SourceDir/$File.cpp" -I "$OwnDir/HexaLib" $Libraries $PerformanceOpt $Warnings
+	    g++ -std=c++14 -g -o "$OwnDir/Build/$File.o" -c "$OwnDir/$SourceDir/$File.cpp" $Libraries $PerformanceOpt $Warnings
 	  fi
           echo "H $NewSumH" > "$BuildDir/$File.sum"
           echo -n "CPP $NewSumCPP" >> "$BuildDir/$File.sum"
@@ -300,9 +300,9 @@ Message "Starting to build at: $T1" I
 
 # Here's the place for initial operations.
 CppFiles=""
-for SourceDir in $SourceDirectories # HexaLib
+for SourceDir in $SourceDirectories # src
 do
-  for i in $(ls "$OwnDir/$SourceDir" | grep ".cpp") # HexaLib
+  for i in $(ls "$OwnDir/$SourceDir" | grep ".cpp") # src
   do
     if [[ -z "$CppFiles" ]]
     then
@@ -386,7 +386,7 @@ else
       done
     fi
   done
-  # Find library headers on build queue, that include their entire directory(eg. HexaLib/HexaLib.h, Source/Engine/Engine.h, etc.)
+  # Find library headers on build queue, that include their entire directory(eg. src/src.h, Source/Engine/Engine.h, etc.)
   LibHeaders=""
   for i in $BuildQueue
   do
@@ -540,7 +540,7 @@ do
   fi
 done
 rm -f "$OwnDir/$ProgramName"
-g++ -std=c++14 -g -o "$OwnDir/$ProgramName" "$OwnDir/Source/$Main.cpp" -I "$OwnDir/HexaLib" $Binaries $Libraries $PerformanceOpt $Warnings $WarningsMainOnly
+g++ -std=c++14 -g -o "$OwnDir/$ProgramName" "$OwnDir/Source/$Main.cpp" $Binaries $Libraries $PerformanceOpt $Warnings $WarningsMainOnly
 
 
 

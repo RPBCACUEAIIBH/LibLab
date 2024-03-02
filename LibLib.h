@@ -18,6 +18,6 @@
 
 // Yest that's right! Parts of my HexaLib library will run on PC as well, which will be very useful if I need PC drivers for my microcontroller projects. :)
 #if ! defined (LIB_INCLUDED) && defined (PCSoftware)
-#include "Source/Core/PCOnly.h"
+#include "PCOnly.h"
 #warning "Architecture: PC"
 #endif
